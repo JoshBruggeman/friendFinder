@@ -1,6 +1,16 @@
-$.ajax({url: currentURL + "/api/friends", method: "GET"})
-  .done(function(friendsData) {
+var friendsData = require("../data/friends.js");
 
-  })
 
-$.ajax({url: currentURL + "/api/friends", method: "POST"})
+module.exports = function(app) { 
+  app.get("/api/friends", function(req, res) {
+        res.json(friendsData);
+    });
+
+
+ app.post("/api/clear", function() {
+        // Empty out the arrays of data
+        friendsData = [];
+
+        console.log(friendsData);
+    });
+};
